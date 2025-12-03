@@ -33,7 +33,7 @@ bash install.sh
 ✅ نصب تمام Python packages  
 ✅ دانلود Playwright browsers  
 ✅ تست syntax تمام فایل‌ها  
-✅ اجرای برنامه (اختیاری)  
+✅ اجرای برنامه (اختیاری)
 
 ---
 
@@ -50,6 +50,7 @@ python3 run.py
 ```
 
 **منو:**
+
 ```
 1. Start Scheduler (30-min intervals)
 2. Start API Server (port 5000)
@@ -64,6 +65,7 @@ python3 run.py
 ### **Option 2: مستقیم اجرا**
 
 #### **Scheduler (دریافت خودکار)**
+
 ```bash
 # Windows
 python scheduler.py
@@ -78,6 +80,7 @@ python3 scheduler.py
 ```
 
 #### **API Server (وب دسترسی)**
+
 ```bash
 # Windows
 python api.py
@@ -136,16 +139,19 @@ chmod +x deploy.sh
 ## 🔍 بررسی لاگ‌ها
 
 ### **Logs مکان:**
+
 - `logs/scraper.log` - لاگ‌های scraper
 
 ### **نمایش:**
 
 **Windows:**
+
 ```batch
 type logs\scraper.log
 ```
 
 **Linux/Mac:**
+
 ```bash
 tail -f logs/scraper.log
 ```
@@ -157,16 +163,19 @@ tail -f logs/scraper.log
 ### **"Python not found"**
 
 **Windows:**
+
 - دانلود از: https://www.python.org/downloads/
 - نصب با checkbox "Add Python to PATH"
 
 **Linux:**
+
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip
 ```
 
 **Mac:**
+
 ```bash
 brew install python3
 ```
@@ -197,12 +206,14 @@ pip3 install -r requirements.txt
 ### **"Port already in use"**
 
 **Mac/Linux:**
+
 ```bash
 lsof -i :5000
 kill -9 <PID>
 ```
 
 **Windows:**
+
 ```batch
 netstat -ano | findstr :5000
 taskkill /PID <PID> /F
@@ -224,14 +235,14 @@ python3 -m playwright install chromium
 
 ## 📚 مستندات بیشتر
 
-| فایل | توضیح |
-|------|--------|
-| [README.md](README.md) | راهنمای کامل |
-| [QUICKSTART.md](QUICKSTART.md) | شروع سریع |
-| [USAGE.md](USAGE.md) | نحوه استفاده |
-| [RETRY_LOGIC.md](RETRY_LOGIC.md) | توضیح Retry Logic |
-| [INSTALL_UBUNTU.md](INSTALL_UBUNTU.md) | نصب بر Ubuntu |
-| [FINAL_STATUS.md](FINAL_STATUS.md) | وضعیت فاینالی |
+| فایل                                   | توضیح             |
+| -------------------------------------- | ----------------- |
+| [README.md](README.md)                 | راهنمای کامل      |
+| [QUICKSTART.md](QUICKSTART.md)         | شروع سریع         |
+| [USAGE.md](USAGE.md)                   | نحوه استفاده      |
+| [RETRY_LOGIC.md](RETRY_LOGIC.md)       | توضیح Retry Logic |
+| [INSTALL_UBUNTU.md](INSTALL_UBUNTU.md) | نصب بر Ubuntu     |
+| [FINAL_STATUS.md](FINAL_STATUS.md)     | وضعیت فاینالی     |
 
 ---
 
@@ -265,12 +276,12 @@ chmod +x deploy.sh
 
 ## 🎯 خلاصه
 
-| مرحله | فرمان | وقت |
-|------|-------|------|
-| 1. Clone | `git clone ...` | 30 ثانیه |
+| مرحله      | فرمان                              | وقت       |
+| ---------- | ---------------------------------- | --------- |
+| 1. Clone   | `git clone ...`                    | 30 ثانیه  |
 | 2. Install | `bash install.sh` یا `install.bat` | 2-3 دقیقه |
-| 3. Run | `python3 run.py` | فوری |
-| 4. Test | `http://localhost:5000/api/aqi` | 10 ثانیه |
+| 3. Run     | `python3 run.py`                   | فوری      |
+| 4. Test    | `http://localhost:5000/api/aqi`    | 10 ثانیه  |
 
 **کل: حدود 5 دقیقه!** ⏱️
 

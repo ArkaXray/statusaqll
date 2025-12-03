@@ -3,6 +3,7 @@
 ## ⚠️ مشکل: Playwright Browsers یافت نشد
 
 اگر این خطا دیدید:
+
 ```
 Executable doesn't exist at ~/.cache/ms-playwright/chromium-*/chrome-linux/chrome
 ```
@@ -17,6 +18,7 @@ chmod +x fix-playwright.sh
 ```
 
 این اسکریپت:
+
 - ✅ حذف cache
 - ✅ نصب system dependencies
 - ✅ نصب Playwright browsers
@@ -85,30 +87,35 @@ python3 -c "from scraper import scrape_aqi_data; print('✓ Scraper ready')"
 ## 🖥️ سیستم‌های مختلف:
 
 ### **Ubuntu/Debian:**
+
 ```bash
 sudo apt-get install -y libgconf-2-4 libx11-xcb1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xfixes0 libxdamage1 libxfixes3 libxrandr2 libxss1 libxtst6 libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libgbm1 libasound2
 python3 -m playwright install chromium
 ```
 
 ### **CentOS/RHEL:**
+
 ```bash
 sudo yum install -y https://packages.microsoft.com/rhel/7/prod/Packages/microsoft-edge-stable-*.rpm
 python3 -m playwright install chromium
 ```
 
 ### **Fedora:**
+
 ```bash
 sudo dnf install -y chromium
 python3 -m playwright install chromium
 ```
 
 ### **Mac:**
+
 ```bash
 # Playwright معمولا خودکار کار می‌کند
 python3 -m playwright install chromium
 ```
 
 ### **Windows:**
+
 ```batch
 REM Playwright معمولا خودکار کار می‌کند
 python -m playwright install chromium
@@ -123,7 +130,7 @@ REM یا double-click install.bat
 ✅ **شروع با `bash install.sh`** - تمام چیز خودکار است  
 ✅ **اگر مشکل داشتید** - `bash fix-playwright.sh` اجرا کنید  
 ✅ **بررسی TROUBLESHOOTING.md** - راهنمای مفصل  
-✅ **Internet شما کافی است** - ~300MB برای download  
+✅ **Internet شما کافی است** - ~300MB برای download
 
 ---
 

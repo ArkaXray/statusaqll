@@ -24,6 +24,7 @@ bash update.sh
 ```
 
 یا:
+
 ```bash
 git pull origin main
 ```
@@ -32,12 +33,12 @@ git pull origin main
 
 ## 📚 راهنما‌های تفصیلی:
 
-| راهنما | توضیح |
-|--------|--------|
-| **[LINUX_SETUP.md](LINUX_SETUP.md)** | نصب step-by-step |
-| **[LINUX_UPDATE.md](LINUX_UPDATE.md)** | آپدیت و نگهداری |
-| **[QUICKSTART.md](QUICKSTART.md)** | شروع سریع |
-| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | حل مشکلات |
+| راهنما                                       | توضیح            |
+| -------------------------------------------- | ---------------- |
+| **[LINUX_SETUP.md](LINUX_SETUP.md)**         | نصب step-by-step |
+| **[LINUX_UPDATE.md](LINUX_UPDATE.md)**       | آپدیت و نگهداری  |
+| **[QUICKSTART.md](QUICKSTART.md)**           | شروع سریع        |
+| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | حل مشکلات        |
 
 ---
 
@@ -101,13 +102,13 @@ python3 api.py
 
 ## 📁 فایل‌های مهم:
 
-| فایل | توضیح |
-|------|--------|
-| `install.sh` | نصب اول |
-| `update.sh` | آپدیت |
-| `fix-playwright.sh` | اگر مشکل |
-| `deploy.sh` | Automation |
-| `run.py` | منوی اصلی |
+| فایل                | توضیح      |
+| ------------------- | ---------- |
+| `install.sh`        | نصب اول    |
+| `update.sh`         | آپدیت      |
+| `fix-playwright.sh` | اگر مشکل   |
+| `deploy.sh`         | Automation |
+| `run.py`            | منوی اصلی  |
 
 ---
 

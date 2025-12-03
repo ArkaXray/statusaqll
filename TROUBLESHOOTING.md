@@ -3,6 +3,7 @@
 ## ❌ مشکل: Playwright Browsers Not Installed
 
 **علامت:**
+
 ```
 Executable doesn't exist at /root/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
 ```
@@ -10,16 +11,19 @@ Executable doesn't exist at /root/.cache/ms-playwright/chromium-1091/chrome-linu
 ### حل:
 
 **1. دستی نصب کنید:**
+
 ```bash
 python3 -m playwright install chromium
 ```
 
 **2. یا برای تمام browsers:**
+
 ```bash
 python3 -m playwright install
 ```
 
 **3. اگر دوباره خطا داد:**
+
 ```bash
 # پاک‌سازی و دوباره نصب
 rm -rf ~/.cache/ms-playwright/
@@ -31,6 +35,7 @@ python3 -m playwright install chromium
 ## ❌ مشکل: Missing System Dependencies (Linux)
 
 **علامت:**
+
 ```
 Error: Executable doesn't exist
 ```
@@ -38,6 +43,7 @@ Error: Executable doesn't exist
 ### حل:
 
 **Ubuntu/Debian:**
+
 ```bash
 sudo apt-get update
 sudo apt-get install -y \
@@ -64,6 +70,7 @@ sudo apt-get install -y \
 ```
 
 **سپس:**
+
 ```bash
 python3 -m playwright install chromium
 ```
@@ -75,16 +82,19 @@ python3 -m playwright install chromium
 ### حل:
 
 **Linux:**
+
 ```bash
 sudo apt-get install python3 python3-pip
 ```
 
 **Mac:**
+
 ```bash
 brew install python3
 ```
 
 **Windows:**
+
 - دانلود از: https://www.python.org/downloads/
 - نصب با checkbox "Add Python to PATH"
 
@@ -95,16 +105,19 @@ brew install python3
 ### حل:
 
 **Linux:**
+
 ```bash
 sudo apt-get install python3-pip
 ```
 
 **Mac:**
+
 ```bash
 python3 -m ensurepip --upgrade
 ```
 
 **Windows:**
+
 ```batch
 python -m pip install --upgrade pip
 ```
@@ -116,6 +129,7 @@ python -m pip install --upgrade pip
 ### حل:
 
 **Mac/Linux:**
+
 ```bash
 # بیابید کی استفاده می‌کند
 lsof -i :5000
@@ -128,6 +142,7 @@ pkill -f "api.py"
 ```
 
 **Windows:**
+
 ```batch
 netstat -ano | findstr :5000
 taskkill /PID <PID> /F
@@ -138,6 +153,7 @@ taskkill /PID <PID> /F
 ## ❌ مشکل: "Module not found"
 
 **علامت:**
+
 ```
 ModuleNotFoundError: No module named 'playwright'
 ```
@@ -173,6 +189,7 @@ bash install.sh
 ### حل:
 
 **دستی نصب:**
+
 ```bash
 # 1. Clone
 git clone https://github.com/ArkaXray/statusaqll.git
@@ -196,6 +213,7 @@ python3 run.py
 ## ❌ مشکل: Scraper کار نمی‌کند
 
 **علامت:**
+
 ```
 Scraping error: ...
 ```
@@ -203,21 +221,25 @@ Scraping error: ...
 ### حل:
 
 **1. بررسی Site:**
+
 ```bash
 curl https://aqms.doe.ir/App/
 ```
 
 **2. بررسی Internet:**
+
 ```bash
 ping google.com
 ```
 
 **3. دستی تست:**
+
 ```bash
 python3 -c "from scraper import scrape_aqi_data; print(scrape_aqi_data())"
 ```
 
 **4. بررسی لاگ:**
+
 ```bash
 tail -f logs/scraper.log
 ```
@@ -229,16 +251,19 @@ tail -f logs/scraper.log
 ### حل:
 
 **1. بررسی port:**
+
 ```bash
 netstat -tlnp | grep 5000
 ```
 
 **2. دستی اجرا:**
+
 ```bash
 python3 api.py
 ```
 
 **3. تست:**
+
 ```bash
 curl http://localhost:5000/api/health
 ```
@@ -271,15 +296,18 @@ python3 run.py
 ## 📞 اگر هنوز کار نکند:
 
 **آنلاین بررسی کنید:**
+
 - Playwright: https://playwright.dev/python/docs/intro
 - Playwright CI: https://playwright.dev/python/docs/ci
 
 **لاگ‌ها بررسی کنید:**
+
 ```bash
 tail -f logs/scraper.log
 ```
 
 **دستور verbose استفاده کنید:**
+
 ```bash
 python3 -m playwright install chromium --verbose
 ```
@@ -292,7 +320,7 @@ python3 -m playwright install chromium --verbose
 ✅ **System dependencies لازم است (Linux)**  
 ✅ **Internet connection ضروری است**  
 ✅ **Port 5000 آزاد بودن لازم است**  
-✅ **Sufficient disk space (300MB+ برای Playwright)**  
+✅ **Sufficient disk space (300MB+ برای Playwright)**
 
 ---
 

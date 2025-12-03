@@ -7,6 +7,7 @@
 ## ⚡ شروع سریع (یک کلیک!)
 
 ### **Windows**
+
 ```batch
 git clone https://github.com/ArkaXray/statusaqll.git
 cd statusaqll
@@ -14,6 +15,7 @@ install.bat
 ```
 
 ### **Linux/Mac**
+
 ```bash
 git clone https://github.com/ArkaXray/statusaqll.git
 cd statusaqll

@@ -3,6 +3,7 @@
 ## 🚀 سه مرحله ساده:
 
 ### **1️⃣ Clone**
+
 ```bash
 git clone https://github.com/ArkaXray/statusaqll.git
 cd statusaqll
@@ -11,16 +12,19 @@ cd statusaqll
 ### **2️⃣ نصب**
 
 #### Windows: دوبار کلیک روی `install.bat`
+
 ```batch
 install.bat
 ```
 
 #### Linux/Mac: اجرا کنید
+
 ```bash
 bash install.sh
 ```
 
 ### **3️⃣ اجرا**
+
 ```bash
 python run.py          # Windows
 python3 run.py         # Linux/Mac

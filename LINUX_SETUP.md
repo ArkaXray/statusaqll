@@ -103,6 +103,7 @@ python3 run.py
 ```
 
 **منو:**
+
 ```
 1. Start Scheduler (auto collect every 30 minutes)
 2. Start API Server (port 5000)
@@ -193,21 +194,25 @@ git checkout -- .
 ## 🐛 حل مشکلات:
 
 ### **"Python3 not found"**
+
 ```bash
 sudo apt-get install python3
 ```
 
 ### **"Permission denied"**
+
 ```bash
 chmod +x *.sh
 ```
 
 ### **"Playwright error"**
+
 ```bash
 bash fix-playwright.sh
 ```
 
 ### **"Port already in use"**
+
 ```bash
 pkill -f "api.py"
 ```
@@ -259,11 +264,11 @@ python3 run.py
 
 ## 🎯 خلاصه:
 
-| Step | فرمان | وقت |
-|------|-------|-----|
-| 1. Clone | `git clone ...` | 30 ثانیه |
-| 2. نصب | `bash install.sh` | 3 دقیقه |
-| 3. اجرا | `python3 run.py` | فوری |
+| Step     | فرمان                  | وقت      |
+| -------- | ---------------------- | -------- |
+| 1. Clone | `git clone ...`        | 30 ثانیه |
+| 2. نصب   | `bash install.sh`      | 3 دقیقه  |
+| 3. اجرا  | `python3 run.py`       | فوری     |
 | 4. آپدیت | `git pull origin main` | 30 ثانیه |
 
 **کل: ~5 دقیقه!** ⏱️

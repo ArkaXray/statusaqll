@@ -37,6 +37,7 @@ bash install.sh
 ```
 
 **این اسکریپ:**
+
 - ✅ بررسی Python
 - ✅ نصب requirements
 - ✅ نصب Playwright
@@ -70,6 +71,7 @@ git pull origin main
 ```
 
 **این دستور:**
+
 - ✅ دانلود تمام تغییرات
 - ✅ آپدیت فایل‌ها
 - ✅ نگه‌داشتن فایل‌های شما
@@ -179,7 +181,7 @@ chmod +x fix-playwright.sh
 ✅ **اول بار:** `bash install.sh`  
 ✅ **بعدی‌ها:** `git pull origin main`  
 ✅ **اگر Playwright مشکل:** `bash fix-playwright.sh`  
-✅ **اگر permission:** `chmod +x *.sh`  
+✅ **اگر permission:** `chmod +x *.sh`
 
 ---
 

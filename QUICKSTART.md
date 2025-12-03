@@ -93,6 +93,7 @@ http://localhost:5000/api/time                # Current time
 ## 🔧 اگر مشکل داشتید:
 
 ### **"Python not found"**
+
 ```bash
 # Windows: https://www.python.org/downloads/
 # Linux: sudo apt install python3
@@ -100,17 +101,20 @@ http://localhost:5000/api/time                # Current time
 ```
 
 ### **"Permission denied" (Linux/Mac)**
+
 ```bash
 chmod +x install.sh
 bash install.sh
 ```
 
 ### **"Module not found"**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### **"Port already in use"**
+
 ```bash
 # Mac/Linux
 lsof -i :5000
@@ -144,11 +148,11 @@ chmod +x deploy.sh
 
 ## ✨ خلاصه:
 
-| OS | دستور |
-|----|--------|
+| OS          | دستور                      |
+| ----------- | -------------------------- |
 | **Windows** | `install.bat` (دوبار کلیک) |
-| **Linux** | `bash install.sh` |
-| **Mac** | `bash install.sh` |
+| **Linux**   | `bash install.sh`          |
+| **Mac**     | `bash install.sh`          |
 
 ---
 
