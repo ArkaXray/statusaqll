@@ -1,0 +1,17 @@
+[Unit]
+Description=AQI Iran Scheduler Timer
+Documentation=https://github.com/your-repo/AQI_Iran
+
+[Timer]
+# هر 30 دقیقه
+OnBootSec=2min
+OnUnitActiveSec=30min
+
+# اگر سیستم در زمان اجرا خاموش بود، زمانی که روشن شود اجرا می‌شود
+Persistent=true
+
+# دقت تایمر (تا 1 دقیقه)
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

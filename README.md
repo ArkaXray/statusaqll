@@ -56,36 +56,43 @@ python scraper.py
 ## API Endpoints
 
 ### همه داده‌ها
+
 ```
 GET http://localhost:5000/api/aqi
 ```
 
 ### داده‌های یک استان
+
 ```
 GET http://localhost:5000/api/aqi/تهران
 ```
 
 ### دامنه معین
+
 ```
 GET http://localhost:5000/api/aqi/range/50-100
 ```
 
 ### بدترین وضعیت
+
 ```
 GET http://localhost:5000/api/aqi/worst?limit=5
 ```
 
 ### بهترین وضعیت
+
 ```
 GET http://localhost:5000/api/aqi/best?limit=5
 ```
 
 ### آمار
+
 ```
 GET http://localhost:5000/api/aqi/stats
 ```
 
 ### ساعت تهران
+
 ```
 GET http://localhost:5000/api/time
 ```
@@ -114,6 +121,7 @@ AQI_Iran/
 ## منطقه زمانی
 
 تمام داده‌ها و لاگ‌ها به منطقه زمانی **Asia/Tehran** هستند.
+
 - UTC Offset: **+03:30**
 - مثال: `2025-12-03T21:44:12.167361+03:30`
 
@@ -122,6 +130,7 @@ AQI_Iran/
 فایل لاگ در `logs/scraper.log` ذخیره می‌شود.
 
 نمونه:
+
 ```
 [2025-12-03 21:44:12] INFO: شروع دریافت AQI در 2025-12-03T21:44:12.167361+03:30
 [2025-12-03 21:44:15] INFO: ✓ تهران: 125

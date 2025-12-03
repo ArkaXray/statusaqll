@@ -1,0 +1,29 @@
+[Unit]
+Description=AQI Iran Scheduler Service
+Documentation=https://github.com/your-repo/AQI_Iran
+After=network.target
+
+[Service]
+Type=simple
+User=%u
+WorkingDirectory=%h/AQI_Iran
+ExecStart=%h/.local/bin/python3 scheduler.py
+
+# خودکار restart در صورت خرابی
+Restart=always
+RestartSec=30
+
+# لاگ‌های سیستمی
+StandardOutput=journal
+StandardError=journal
+
+# محیط
+Environment="PYTHONUNBUFFERED=1"
+Environment="TZ=Asia/Tehran"
+
+# محدودیت‌های منابع (اختیاری)
+# MemoryLimit=256M
+# CPUQuota=50%
+
+[Install]
+WantedBy=default.target
