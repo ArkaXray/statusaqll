@@ -1,0 +1,16 @@
+SCHEDULE_INTERVAL_MINUTES = 30
+MAX_RETRIES = 3
+RETRY_DELAY_MINUTES = 5
+
+LOG_FILE = 'logs/scraper.log'
+LOG_DIR = 'logs'
+
+DATA_DIR = 'data'
+DATA_FILE = 'data/aqi_data.json'
+BACKUP_DIR = 'data/backups'
+
+BROWSER_TIMEOUT = 90000
+PAGE_LOAD_TIMEOUT = 7000
+
+AQI_MIN = 50
+AQI_MAX = 500
