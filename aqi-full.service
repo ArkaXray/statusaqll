@@ -9,7 +9,7 @@ User=%u
 WorkingDirectory=%h/statusaqll
 
 # شروع Scheduler + API
-ExecStart=%h/.local/bin/python3 run.py
+ExecStart=%h/statusaqll/start-service.py
 
 # اگر خرابی بود، restart کن
 Restart=always
