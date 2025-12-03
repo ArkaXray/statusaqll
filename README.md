@@ -1,23 +1,53 @@
-# AQI Iran
+# 🌍 AQI Iran
 
 سامانه جمع‌آوری و بررسی شاخص کیفیت هوای ایران
 
-## ویژگی‌ها
+---
+
+## ⚡ شروع سریع (یک کلیک!)
+
+### **Windows**
+```batch
+git clone https://github.com/ArkaXray/statusaqll.git
+cd statusaqll
+install.bat
+```
+
+### **Linux/Mac**
+```bash
+git clone https://github.com/ArkaXray/statusaqll.git
+cd statusaqll
+bash install.sh
+```
+
+✅ **تمام!** برنامه به‌طور خودکار نصب می‌شود!
+
+👉 [نقشه تفصیلی: QUICKSTART.md](QUICKSTART.md)
+
+---
+
+## ✨ ویژگی‌ها
 
 - 📊 دریافت داده‌های AQI تمام 31 استان ایران
 - 🔄 به‌روزرسانی خودکار هر 30 دقیقه
+- 🔄 **Smart Retry Logic**: اگر سایت DOWN باشد، هر 10 دقیقه تست می‌کند
 - 📝 لاگ جامع و قابل‌ردیابی
 - 🌐 API RESTful برای دسترسی داده‌ها
 - 🔒 عمومی - بدون نیاز به token یا secret
 - 🕐 تمام زمان‌ها به منطقه زمانی تهران (UTC+03:30)
+- 🐧 **اتوموشن کامل**: Cron/Systemd/Timer برای Ubuntu
 
-## نصب
+## 📦 نصب دستی
 
 ```bash
-git clone https://github.com/yourusername/AQI_Iran.git
-cd AQI_Iran
+git clone https://github.com/ArkaXray/statusaqll.git
+cd statusaqll
 
+# Windows
 pip install -r requirements.txt
+
+# Linux/Mac
+pip3 install -r requirements.txt
 ```
 
 ## پیکربندی
