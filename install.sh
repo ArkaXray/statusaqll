@@ -66,12 +66,55 @@ chmod 755 "$PROJECT_DIR/logs"
 chmod 755 "$PROJECT_DIR/data"
 print_ok "Directories created"
 
+# نصب Linux system dependencies (برای Playwright)
+print_info "\nChecking system dependencies..."
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$ID
+    
+    if [ "$OS" = "ubuntu" ] || [ "$OS" = "debian" ]; then
+        print_info "Detected: Debian/Ubuntu"
+        print_info "Installing system dependencies (this may require sudo)..."
+        
+        # بررسی اگر sudo موجود است
+        if sudo -n true 2>/dev/null; then
+            sudo apt-get update -qq 2>/dev/null || true
+            sudo apt-get install -y -qq \
+                libgconf-2-4 \
+                libx11-xcb1 \
+                libxcb-icccm4 \
+                libxcb-image0 \
+                libxcb-keysyms1 \
+                libxcb-render-util0 \
+                libxcb-xfixes0 \
+                libxdamage1 \
+                libxfixes3 \
+                libxrandr2 \
+                libxss1 \
+                libxtst6 \
+                libnss3 \
+                libnspr4 \
+                libatk1.0-0 \
+                libatk-bridge2.0-0 \
+                libcups2 \
+                libdrm2 \
+                libgbm1 \
+                libasound2 \
+                2>/dev/null || true
+            print_ok "System dependencies installed"
+        else
+            print_warning "Some system dependencies may not be installed (requires sudo)"
+            print_warning "If Playwright fails, run: sudo apt-get install libgconf-2-4 libx11-xcb1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xfixes0 libxdamage1 libxfixes3 libxrandr2 libxss1 libxtst6 libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libgbm1 libasound2"
+        fi
+    fi
+fi
+
 # نصب dependencies
 print_info "\nInstalling Python packages..."
 print_info "This may take a few minutes..."
-python3 -m pip install -q --user -r "$PROJECT_DIR/requirements.txt"
-if [ $? -ne 0 ]; then
-    print_error "Failed to install packages!"
+python3 -m pip install -q --user -r "$PROJECT_DIR/requirements.txt" 2>&1 | grep -v "already satisfied" || true
+if [ $? -ne 0 ] && [ $? -ne 1 ]; then
+    print_warning "Some packages failed to install (continuing anyway)"
 fi
 print_ok "Packages installed"
 
@@ -84,14 +127,19 @@ for file in config.py scraper.py scheduler.py api.py; do
 done
 print_ok "All essential files found"
 
-# نصب Playwright
+# نصب Playwright Browsers
 print_info "\nSetting up Playwright browsers..."
 print_info "This will download ~300MB, please wait..."
-python3 -m playwright install chromium --quiet 2>/dev/null || true
+print_info "If this fails, you can run manually:"
+print_info "  python3 -m playwright install chromium"
+echo ""
+
+python3 -m playwright install chromium 2>&1 | tail -5
 if [ $? -eq 0 ]; then
-    print_ok "Playwright browsers installed"
+    print_ok "Playwright browsers installed successfully"
 else
-    print_warning "Playwright setup had issues, but continuing..."
+    print_warning "Playwright installation may have had issues"
+    print_info "Try running manually: python3 -m playwright install chromium"
 fi
 
 # تست syntax
@@ -141,3 +189,4 @@ else
 fi
 
 echo ""
+
