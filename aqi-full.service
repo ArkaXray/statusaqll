@@ -1,0 +1,27 @@
+[Unit]
+Description=AQI Iran Scheduler + API Service
+Documentation=https://github.com/ArkaXray/statusaqll
+After=network.target
+
+[Service]
+Type=simple
+User=%u
+WorkingDirectory=%h/statusaqll
+
+# شروع Scheduler + API
+ExecStart=%h/.local/bin/python3 run.py
+
+# اگر خرابی بود، restart کن
+Restart=always
+RestartSec=30
+
+# لاگ‌های سیستمی
+StandardOutput=journal
+StandardError=journal
+
+# محیط
+Environment="PYTHONUNBUFFERED=1"
+Environment="TZ=Asia/Tehran"
+
+[Install]
+WantedBy=default.target

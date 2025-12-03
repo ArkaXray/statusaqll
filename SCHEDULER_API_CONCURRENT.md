@@ -23,23 +23,29 @@
 ## 🚀 استفاده:
 
 ### **Option 1: فقط Scheduler**
+
 ```
 Choose: 1
 ```
+
 ✅ جمع‌آوری هر 30 دقیقه
 ❌ API کار نمی‌کند
 
 ### **Option 2: فقط API**
+
 ```
 Choose: 2
 ```
+
 ❌ جمع‌آوری کار نمی‌کند
 ✅ API در port 5000
 
 ### **Option 3: هر دو (بهترین!) ⭐**
+
 ```
 Choose: 3
 ```
+
 ✅ جمع‌آوری هر 30 دقیقه
 ✅ API در port 5000
 ✅ هردو بصورت **background** اجرا می‌شوند
@@ -49,12 +55,14 @@ Choose: 3
 ## 💡 کاری که تغییر کرد:
 
 ### قبل:
+
 ```
 Choose 1 → Scheduler شروع می‌شود → منتظر اتمام
            API مسدود است
 ```
 
 ### بعد:
+
 ```
 Choose 3 → Scheduler شروع (background)
         → API شروع (background)
@@ -72,7 +80,7 @@ Choose 3 → Scheduler شروع (background)
   2. Start API Server
   3. Start Both (Scheduler + API)
   ...
-  
+
 Choose: 3
 
 ▶️  Starting Scheduler + API (Background)...
@@ -99,7 +107,7 @@ You can:
 ✅ **Non-blocking** - منوی دوباره ظاهر می‌شود  
 ✅ **Ctrl+C** - همه سرویس‌ها بسته می‌شوند  
 ✅ **Log viewing** - حالا کار می‌کند  
-✅ **Stats** - نمایش آمار بهتر  
+✅ **Stats** - نمایش آمار بهتر
 
 ---
 
@@ -137,7 +145,7 @@ http://localhost:5000/api/stats
 ✅ Option 3 برای production بهترین است  
 ✅ هردو service مستقل هستند  
 ✅ Ctrl+C هردو را بسته می‌کند  
-✅ Log viewing دستور 5 کار می‌کند  
+✅ Log viewing دستور 5 کار می‌کند
 
 ---
 

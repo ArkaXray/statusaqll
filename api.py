@@ -222,6 +222,16 @@ def not_found(e):
     }), 404
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return jsonify({
+        'error': 'Endpoint not found',
+        'status': 'not_found',
+        'message': 'Use /api/health or /api/aqi for valid endpoints',
+        'timestamp': get_tehran_time().isoformat()
+    }), 404
+
+
 @app.errorhandler(500)
 def server_error(e):
     return jsonify({
@@ -229,6 +239,29 @@ def server_error(e):
         'status': 'server_error',
         'timestamp': get_tehran_time().isoformat()
     }), 500
+
+
+@app.route('/', methods=['GET'])
+def root():
+    """صفحه اصلی - راهنمای API"""
+    return jsonify({
+        'status': 'ok',
+        'message': 'AQI Iran API Server',
+        'version': '2.0.0',
+        'timezone': 'Asia/Tehran (UTC+03:30)',
+        'timestamp': get_tehran_time().isoformat(),
+        'endpoints': {
+            'health': '/api/health',
+            'site_status': '/api/site-status',
+            'all_aqi': '/api/aqi',
+            'specific_state': '/api/aqi/<state>',
+            'aqi_range': '/api/aqi/range/<min>-<max>',
+            'worst_quality': '/api/aqi/worst?limit=5',
+            'best_quality': '/api/aqi/best?limit=5',
+            'statistics': '/api/aqi/stats',
+            'current_time': '/api/time'
+        }
+    })
 
 
 if __name__ == '__main__':
