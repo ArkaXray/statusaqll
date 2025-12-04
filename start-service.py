@@ -1,52 +1,101 @@
-#!/usr/bin/env python3#!/usr/bin/env python3#!/usr/bin/env python3
+#!/usr/bin/env python3#!/usr/bin/env python3#!/usr/bin/env python3#!/usr/bin/env python3
+
+"""
+
+AQI Iran - Simple Service Starter"""
 
 """
 
 AQI Iran - Service Starter (Non-Interactive)""""""
 
-برای استفاده در systemd service
+import sys
 
-"""AQI Iran - Service Starter (Non-Interactive)AQI Iran - Service Starter (Non-Interactive)
+import osبرای استفاده در systemd service
 
+import subprocess
 
-
-import sysبرای استفاده در systemd serviceبرای استفاده در systemd service
-
-import os
-
-import subprocess""""""
-
-import time
-
-import signal
-
-import logging
-
-import threadingimport sysimport sys
-
-from datetime import datetime
-
-import pytzimport osimport os
+import time"""AQI Iran - Service Starter (Non-Interactive)AQI Iran - Service Starter (Non-Interactive)
 
 
 
-TEHRAN_TZ = pytz.timezone('Asia/Tehran')import subprocessimport subprocess
+def main():
 
-LOG_FILE = os.path.expanduser('~/.aqi-service.log')
+    print("[START] AQI Iran Service Starter")
 
-import timeimport time
+    print("[INFO] Starting Scheduler...")import sysبرای استفاده در systemd serviceبرای استفاده در systemd service
 
-# Setup logging
+    
 
-logging.basicConfig(import signalimport signal
+    try:import os
 
-    level=logging.DEBUG,
+        scheduler_proc = subprocess.Popen([sys.executable, 'scheduler.py'])
 
-    format='[%(asctime)s] %(levelname)s: %(message)s',import loggingimport logging
+        print(f"[OK] Scheduler started (PID: {scheduler_proc.pid})")import subprocess""""""
+
+    except Exception as e:
+
+        print(f"[ERROR] Failed to start Scheduler: {e}")import time
+
+        sys.exit(1)
+
+    import signal
+
+    time.sleep(2)
+
+    import logging
+
+    print("[INFO] Starting API Server...")
+
+    try:import threadingimport sysimport sys
+
+        api_proc = subprocess.Popen([sys.executable, 'api.py'])
+
+        print(f"[OK] API Server started (PID: {api_proc.pid})")from datetime import datetime
+
+    except Exception as e:
+
+        print(f"[ERROR] Failed to start API: {e}")import pytzimport osimport os
+
+        sys.exit(1)
+
+    
+
+    print("[OK] All services started successfully")
+
+    print("[MONITOR] Watching processes...")TEHRAN_TZ = pytz.timezone('Asia/Tehran')import subprocessimport subprocess
+
+    
+
+    while True:LOG_FILE = os.path.expanduser('~/.aqi-service.log')
+
+        time.sleep(60)
+
+        import timeimport time
+
+        if scheduler_proc.poll() is not None:
+
+            print("[WARN] Scheduler process died!")# Setup logging
+
+            scheduler_proc = subprocess.Popen([sys.executable, 'scheduler.py'])
+
+            print(f"[OK] Scheduler restarted (PID: {scheduler_proc.pid})")logging.basicConfig(import signalimport signal
+
+        
+
+        if api_proc.poll() is not None:    level=logging.DEBUG,
+
+            print("[WARN] API process died!")
+
+            api_proc = subprocess.Popen([sys.executable, 'api.py'])    format='[%(asctime)s] %(levelname)s: %(message)s',import loggingimport logging
+
+            print(f"[OK] API restarted (PID: {api_proc.pid})")
 
     datefmt='%Y-%m-%d %H:%M:%S',
 
-    handlers=[import threadingfrom datetime import datetime
+if __name__ == '__main__':
+
+    main()    handlers=[import threadingfrom datetime import datetime
+
 
         logging.FileHandler(LOG_FILE, encoding='utf-8'),
 
