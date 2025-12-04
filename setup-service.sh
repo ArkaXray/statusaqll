@@ -60,10 +60,8 @@ mkdir -p "$SERVICE_DIR"
 print_info "\nCopying service file..."
 cp "$PROJECT_DIR/aqi-full.service" "$SERVICE_DIR/aqi-full.service"
 
-# تعویض مسیر در service (برای %h placeholder)
-PYTHON_PATH=$(which python3)
-sed -i "s|%h|$HOME|g" "$SERVICE_DIR/aqi-full.service"
-sed -i "s|/usr/bin/python3|$PYTHON_PATH|g" "$SERVICE_DIR/aqi-full.service"
+# فقط %h و %u را ترک کنید - systemd خودش تبدیل می‌کند
+# شاید نیازی به sed نباشد
 
 print_ok "Service file configured"
 
