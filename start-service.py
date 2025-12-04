@@ -1,218 +1,433 @@
-#!/usr/bin/env python3#!/usr/bin/env python3
+#!/usr/bin/env python3#!/usr/bin/env python3#!/usr/bin/env python3
 
-""""""
+"""
 
-AQI Iran - Service Starter (Non-Interactive)AQI Iran - Service Starter (Non-Interactive)
+AQI Iran - Service Starter (Non-Interactive)""""""
 
-برای استفاده در systemd serviceبرای استفاده در systemd service
+برای استفاده در systemd service
 
-""""""
+"""AQI Iran - Service Starter (Non-Interactive)AQI Iran - Service Starter (Non-Interactive)
 
 
 
-import sysimport sys
+import sysبرای استفاده در systemd serviceبرای استفاده در systemd service
 
-import osimport os
+import os
 
-import subprocessimport subprocess
+import subprocess""""""
 
-import timeimport time
+import time
 
-import signalimport signal
+import signal
 
-import loggingimport logging
+import logging
 
-import threadingfrom datetime import datetime
+import threadingimport sysimport sys
 
-from datetime import datetimeimport pytz
+from datetime import datetime
 
-import pytz
+import pytzimport osimport os
 
-TEHRAN_TZ = pytz.timezone('Asia/Tehran')
 
-TEHRAN_TZ = pytz.timezone('Asia/Tehran')LOG_FILE = os.path.expanduser('~/.aqi-service.log')
+
+TEHRAN_TZ = pytz.timezone('Asia/Tehran')import subprocessimport subprocess
 
 LOG_FILE = os.path.expanduser('~/.aqi-service.log')
 
+import timeimport time
+
 # Setup logging
 
-# Setup logginglogging.basicConfig(
+logging.basicConfig(import signalimport signal
 
-logging.basicConfig(    level=logging.DEBUG,
+    level=logging.DEBUG,
 
-    level=logging.DEBUG,    format='[%(asctime)s] %(levelname)s: %(message)s',
+    format='[%(asctime)s] %(levelname)s: %(message)s',import loggingimport logging
 
-    format='[%(asctime)s] %(levelname)s: %(message)s',    datefmt='%Y-%m-%d %H:%M:%S',
+    datefmt='%Y-%m-%d %H:%M:%S',
 
-    datefmt='%Y-%m-%d %H:%M:%S',    handlers=[
+    handlers=[import threadingfrom datetime import datetime
 
-    handlers=[        logging.FileHandler(LOG_FILE, encoding='utf-8'),
+        logging.FileHandler(LOG_FILE, encoding='utf-8'),
 
-        logging.FileHandler(LOG_FILE, encoding='utf-8'),        logging.StreamHandler()
+        logging.StreamHandler()from datetime import datetimeimport pytz
 
-        logging.StreamHandler()    ]
+    ]
 
-    ])
-
-)logger = logging.getLogger('AQI-Service')
+)import pytz
 
 logger = logging.getLogger('AQI-Service')
 
+TEHRAN_TZ = pytz.timezone('Asia/Tehran')
+
 # برای ذخیره processes
 
-# برای ذخیره processesprocesses = {
+processes = {TEHRAN_TZ = pytz.timezone('Asia/Tehran')LOG_FILE = os.path.expanduser('~/.aqi-service.log')
 
-processes = {    'scheduler': None,
+    'scheduler': None,
 
-    'scheduler': None,    'api': None
-
-    'api': None}
+    'api': NoneLOG_FILE = os.path.expanduser('~/.aqi-service.log')
 
 }
 
+# Setup logging
 
 
-def signal_handler(sig, frame):
 
-def signal_handler(sig, frame):    """مدیریت Ctrl+C"""
+def signal_handler(sig, frame):# Setup logginglogging.basicConfig(
 
-    """مدیریت Ctrl+C"""    log_message("🛑 Shutting down...")
+    """مدیریت Ctrl+C"""
 
-    logger.info("🛑 Shutting down...")    stop_all_processes()
+    logger.info("🛑 Shutting down...")logging.basicConfig(    level=logging.DEBUG,
 
-    stop_all_processes()    sys.exit(0)
+    stop_all_processes()
 
-    sys.exit(0)
+    sys.exit(0)    level=logging.DEBUG,    format='[%(asctime)s] %(levelname)s: %(message)s',
 
 
+
+    format='[%(asctime)s] %(levelname)s: %(message)s',    datefmt='%Y-%m-%d %H:%M:%S',
 
 def stop_all_processes():
 
-def stop_all_processes():    """متوقف کردن همه processes"""
+    """متوقف کردن همه processes"""    datefmt='%Y-%m-%d %H:%M:%S',    handlers=[
 
-    """متوقف کردن همه processes"""    for name in ['scheduler', 'api']:
+    for name in ['scheduler', 'api']:
 
-    for name in ['scheduler', 'api']:        if processes.get(name) and processes[name]:
+        if processes.get(name) and processes[name]:    handlers=[        logging.FileHandler(LOG_FILE, encoding='utf-8'),
 
-        if processes.get(name) and processes[name]:            try:
+            try:
 
-            try:                log_message(f"Stopping {name}...")
+                logger.info(f"Stopping {name}...")        logging.FileHandler(LOG_FILE, encoding='utf-8'),        logging.StreamHandler()
 
-                logger.info(f"Stopping {name}...")                processes[name].terminate()
+                processes[name].terminate()
 
-                processes[name].terminate()                processes[name].wait(timeout=5)
+                try:        logging.StreamHandler()    ]
 
-                try:                log_message(f"✅ {name} stopped")
+                    processes[name].wait(timeout=5)
 
-                    processes[name].wait(timeout=5)            except subprocess.TimeoutExpired:
+                except subprocess.TimeoutExpired:    ])
 
-                except subprocess.TimeoutExpired:                processes[name].kill()
+                    processes[name].kill()
 
-                    processes[name].kill()                log_message(f"✅ {name} killed")
+                    logger.info(f"✅ {name} killed"))logger = logging.getLogger('AQI-Service')
 
-                    logger.info(f"✅ {name} killed")            except Exception as e:
+                logger.info(f"✅ {name} stopped")
 
-                logger.info(f"✅ {name} stopped")                log_message(f"⚠️  Error stopping {name}: {e}")
+            except Exception as e:logger = logging.getLogger('AQI-Service')
 
-            except Exception as e:            processes[name] = None
+                logger.error(f"Error stopping {name}: {e}")
 
-                logger.error(f"⚠️  Error stopping {name}: {e}")
+            processes[name] = None# برای ذخیره processes
 
-            processes[name] = None
 
-def start_scheduler():
 
-    """شروع Scheduler"""
+# برای ذخیره processesprocesses = {
 
-def read_process_output(process, name):    try:
+def read_process_output(process, name):
 
-    """خواندن خروجی process و ثبت آن"""        log_message("▶️  Starting Scheduler...")
+    """خواندن خروجی process و ثبت آن"""processes = {    'scheduler': None,
 
-    try:        processes['scheduler'] = subprocess.Popen(
+    try:
 
-        for line in process.stdout:            [sys.executable, 'scheduler.py'],
+        for line in iter(process.stdout.readline, ''):    'scheduler': None,    'api': None
 
-            if line.strip():            stdout=sys.stdout,
+            if line.strip():
 
-                logger.info(f"[{name.upper()}] {line.rstrip()}")            stderr=sys.stderr,
-
-    except Exception as e:            text=True,
-
-        logger.error(f"Error reading {name} output: {e}")            bufsize=1
-
-        )
-
-        log_message(f"✅ Scheduler started (PID: {processes['scheduler'].pid})")
-
-def start_scheduler():        return True
-
-    """شروع Scheduler"""    except Exception as e:
-
-    try:        log_message(f"❌ Failed to start Scheduler: {e}")
-
-        logger.info("▶️  Starting Scheduler...")        return False
-
-        processes['scheduler'] = subprocess.Popen(
-
-            [sys.executable, 'scheduler.py'],
-
-            stdout=subprocess.PIPE,def start_api():
-
-            stderr=subprocess.STDOUT,    """شروع API"""
-
-            text=True,    try:
-
-            bufsize=1,        log_message("▶️  Starting API Server...")
-
-            universal_newlines=True        processes['api'] = subprocess.Popen(
-
-        )            [sys.executable, 'api.py'],
-
-        logger.info(f"✅ Scheduler started (PID: {processes['scheduler'].pid})")            stdout=sys.stdout,
-
-                    stderr=sys.stderr,
-
-        # Read output in background            text=True,
-
-        thread = threading.Thread(            bufsize=1
-
-            target=read_process_output,        )
-
-            args=(processes['scheduler'], 'scheduler'),        log_message(f"✅ API started (PID: {processes['api'].pid})")
-
-            daemon=True        time.sleep(2)  # منتظر بمانید تا شروع شود
-
-        )        return True
-
-        thread.start()    except Exception as e:
-
-                log_message(f"❌ Failed to start API: {e}")
-
-        return True        return False
+                logger.info(f"[{name.upper()}] {line.rstrip()}")    'api': None}
 
     except Exception as e:
 
+        logger.error(f"Error reading {name} output: {e}")}
+
+
+
+
+
+def start_scheduler():
+
+    """شروع Scheduler"""def signal_handler(sig, frame):
+
+    try:
+
+        logger.info("▶️  Starting Scheduler...")def signal_handler(sig, frame):    """مدیریت Ctrl+C"""
+
+        processes['scheduler'] = subprocess.Popen(
+
+            [sys.executable, 'scheduler.py'],    """مدیریت Ctrl+C"""    log_message("🛑 Shutting down...")
+
+            stdout=subprocess.PIPE,
+
+            stderr=subprocess.STDOUT,    logger.info("🛑 Shutting down...")    stop_all_processes()
+
+            text=True,
+
+            bufsize=1,    stop_all_processes()    sys.exit(0)
+
+            universal_newlines=True
+
+        )    sys.exit(0)
+
+        logger.info(f"✅ Scheduler started (PID: {processes['scheduler'].pid})")
+
+        
+
+        # Read output in background
+
+        thread = threading.Thread(def stop_all_processes():
+
+            target=read_process_output,
+
+            args=(processes['scheduler'], 'scheduler'),def stop_all_processes():    """متوقف کردن همه processes"""
+
+            daemon=True
+
+        )    """متوقف کردن همه processes"""    for name in ['scheduler', 'api']:
+
+        thread.start()
+
+            for name in ['scheduler', 'api']:        if processes.get(name) and processes[name]:
+
+        return True
+
+    except Exception as e:        if processes.get(name) and processes[name]:            try:
+
         logger.error(f"❌ Failed to start Scheduler: {e}")
 
-        return Falsedef monitor_processes():
+        return False            try:                log_message(f"Stopping {name}...")
+
+
+
+                logger.info(f"Stopping {name}...")                processes[name].terminate()
+
+def start_api():
+
+    """شروع API"""                processes[name].terminate()                processes[name].wait(timeout=5)
+
+    try:
+
+        logger.info("▶️  Starting API Server...")                try:                log_message(f"✅ {name} stopped")
+
+        processes['api'] = subprocess.Popen(
+
+            [sys.executable, 'api.py'],                    processes[name].wait(timeout=5)            except subprocess.TimeoutExpired:
+
+            stdout=subprocess.PIPE,
+
+            stderr=subprocess.STDOUT,                except subprocess.TimeoutExpired:                processes[name].kill()
+
+            text=True,
+
+            bufsize=1,                    processes[name].kill()                log_message(f"✅ {name} killed")
+
+            universal_newlines=True
+
+        )                    logger.info(f"✅ {name} killed")            except Exception as e:
+
+        logger.info(f"✅ API started (PID: {processes['api'].pid})")
+
+        time.sleep(2)                logger.info(f"✅ {name} stopped")                log_message(f"⚠️  Error stopping {name}: {e}")
+
+        
+
+        # Read output in background            except Exception as e:            processes[name] = None
+
+        thread = threading.Thread(
+
+            target=read_process_output,                logger.error(f"⚠️  Error stopping {name}: {e}")
+
+            args=(processes['api'], 'api'),
+
+            daemon=True            processes[name] = None
+
+        )
+
+        thread.start()def start_scheduler():
+
+        
+
+        return True    """شروع Scheduler"""
+
+    except Exception as e:
+
+        logger.error(f"❌ Failed to start API: {e}")def read_process_output(process, name):    try:
+
+        return False
+
+    """خواندن خروجی process و ثبت آن"""        log_message("▶️  Starting Scheduler...")
+
+
+
+def monitor_processes():    try:        processes['scheduler'] = subprocess.Popen(
 
     """نگاه‌داری بر روی processes"""
 
+    consecutive_failures = {        for line in process.stdout:            [sys.executable, 'scheduler.py'],
+
+        'scheduler': 0,
+
+        'api': 0            if line.strip():            stdout=sys.stdout,
+
+    }
+
+                    logger.info(f"[{name.upper()}] {line.rstrip()}")            stderr=sys.stderr,
+
     while True:
 
-def start_api():        try:
+        try:    except Exception as e:            text=True,
 
-    """شروع API"""            # بررسی Scheduler
+            # بررسی Scheduler
 
-    try:            if processes['scheduler'] and processes['scheduler'].poll() is not None:
+            if processes['scheduler']:        logger.error(f"Error reading {name} output: {e}")            bufsize=1
 
-        logger.info("▶️  Starting API Server...")                log_message("⚠️  Scheduler died, restarting...")
+                if processes['scheduler'].poll() is not None:
 
-        processes['api'] = subprocess.Popen(                start_scheduler()
+                    logger.warning("⚠️  Scheduler died!")        )
+
+                    consecutive_failures['scheduler'] += 1
+
+                            log_message(f"✅ Scheduler started (PID: {processes['scheduler'].pid})")
+
+                    if consecutive_failures['scheduler'] <= 3:
+
+                        logger.info(f"🔄 Restarting Scheduler (attempt {consecutive_failures['scheduler']})...")def start_scheduler():        return True
+
+                        start_scheduler()
+
+                        time.sleep(5)    """شروع Scheduler"""    except Exception as e:
+
+                    else:
+
+                        logger.error(f"❌ Scheduler failed {consecutive_failures['scheduler']} times!")    try:        log_message(f"❌ Failed to start Scheduler: {e}")
+
+                        time.sleep(300)
+
+                        consecutive_failures['scheduler'] = 0        logger.info("▶️  Starting Scheduler...")        return False
+
+                else:
+
+                    consecutive_failures['scheduler'] = 0        processes['scheduler'] = subprocess.Popen(
+
+            
+
+            # بررسی API            [sys.executable, 'scheduler.py'],
+
+            if processes['api']:
+
+                if processes['api'].poll() is not None:            stdout=subprocess.PIPE,def start_api():
+
+                    logger.warning("⚠️  API died!")
+
+                    consecutive_failures['api'] += 1            stderr=subprocess.STDOUT,    """شروع API"""
+
+                    
+
+                    if consecutive_failures['api'] <= 3:            text=True,    try:
+
+                        logger.info(f"🔄 Restarting API (attempt {consecutive_failures['api']})...")
+
+                        start_api()            bufsize=1,        log_message("▶️  Starting API Server...")
+
+                        time.sleep(5)
+
+                    else:            universal_newlines=True        processes['api'] = subprocess.Popen(
+
+                        logger.error(f"❌ API failed {consecutive_failures['api']} times!")
+
+                        time.sleep(300)        )            [sys.executable, 'api.py'],
+
+                        consecutive_failures['api'] = 0
+
+                else:        logger.info(f"✅ Scheduler started (PID: {processes['scheduler'].pid})")            stdout=sys.stdout,
+
+                    consecutive_failures['api'] = 0
+
+                                stderr=sys.stderr,
+
+            time.sleep(10)
+
+        except KeyboardInterrupt:        # Read output in background            text=True,
+
+            break
+
+        except Exception as e:        thread = threading.Thread(            bufsize=1
+
+            logger.error(f"💥 Monitor error: {e}", exc_info=True)
+
+            time.sleep(5)            target=read_process_output,        )
+
+
+
+            args=(processes['scheduler'], 'scheduler'),        log_message(f"✅ API started (PID: {processes['api'].pid})")
+
+def main():
+
+    """نقطه شروع"""            daemon=True        time.sleep(2)  # منتظر بمانید تا شروع شود
+
+    logger.info("="*70)
+
+    logger.info("🚀 AQI Iran Service Started")        )        return True
+
+    logger.info(f"   Timezone: Asia/Tehran (UTC+03:30)")
+
+    logger.info(f"   Python: {sys.version.split()[0]}")        thread.start()    except Exception as e:
+
+    logger.info(f"   Log file: {LOG_FILE}")
+
+    logger.info("="*70)                log_message(f"❌ Failed to start API: {e}")
+
+    
+
+    signal.signal(signal.SIGINT, signal_handler)        return True        return False
+
+    signal.signal(signal.SIGTERM, signal_handler)
+
+        except Exception as e:
+
+    if not start_scheduler():
+
+        logger.error("❌ Failed to start Scheduler")        logger.error(f"❌ Failed to start Scheduler: {e}")
+
+        sys.exit(1)
+
+            return Falsedef monitor_processes():
+
+    time.sleep(2)
+
+        """نگاه‌داری بر روی processes"""
+
+    if not start_api():
+
+        logger.error("❌ Failed to start API")    while True:
+
+        stop_all_processes()
+
+        sys.exit(1)def start_api():        try:
+
+    
+
+    logger.info("✅ All services started successfully")    """شروع API"""            # بررسی Scheduler
+
+    logger.info("="*70)
+
+        try:            if processes['scheduler'] and processes['scheduler'].poll() is not None:
+
+    try:
+
+        monitor_processes()        logger.info("▶️  Starting API Server...")                log_message("⚠️  Scheduler died, restarting...")
+
+    except KeyboardInterrupt:
+
+        signal_handler(signal.SIGINT, None)        processes['api'] = subprocess.Popen(                start_scheduler()
+
+
 
             [sys.executable, 'api.py'],                time.sleep(5)
 
-            stdout=subprocess.PIPE,            
+if __name__ == '__main__':
+
+    main()            stdout=subprocess.PIPE,            
+
 
             stderr=subprocess.STDOUT,            # بررسی API
 
