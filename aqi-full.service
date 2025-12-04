@@ -15,9 +15,9 @@ ExecStart=/usr/bin/python3 start-service.py
 Restart=always
 RestartSec=30
 
-# لاگ‌های سیستمی
-StandardOutput=journal
-StandardError=journal
+# لاگ‌های فایلی (نه systemd journal)
+StandardOutput=append:%h/.aqi-service-systemd.log
+StandardError=append:%h/.aqi-service-systemd.log
 
 # محیط
 Environment="PYTHONUNBUFFERED=1"
